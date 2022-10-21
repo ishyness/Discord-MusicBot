@@ -8,7 +8,7 @@ const levels = {
 };
 module.exports = {
   name: "bassboost",
-  description: "Enables bass boosting audio effect",
+  description: "Bật hiệu ứng âm thanh Bassboost",
   usage: "<none|low|medium|high>",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -27,12 +27,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **Không có gì đang phát ngay bây giờ...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **Bạn phải ở trong một kênh thoại để sử dụng lệnh này!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -40,13 +40,13 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in the same voice channel as me to use this command!**"
+        "❌ | **Bạn phải ở cùng kênh thoại với BOT để sử dụng lệnh này!**"
       );
 
     if (!args[0])
       return client.sendTime(
         message.channel,
-        "**Please provide a bassboost level. \nAvailable Levels:** `none`, `low`, `medium`, `high`"
+        "**Vui lòng cung cấp mức bassboost. \nCác cấp độ có sẵn:** `none`, `low`, `medium`, `high`"
       );
 
     let level = "none";
@@ -61,14 +61,14 @@ module.exports = {
 
     return client.sendTime(
       message.channel,
-      `✅ | **Bassboost level set to** \`${level}\``
+      `✅ | **Mức bassboost được đặt thành** \`${level}\``
     );
   },
   SlashCommand: {
     options: [
       {
         name: "level",
-        description: `Please provide a bassboost level. Available Levels: low, medium, high, or none`,
+        description: `Vui lòng cung cấp mức bassboost. Các cấp độ có sẵn: low, medium, high, or none`,
         value: "[level]",
         type: 3,
         required: true,
@@ -97,12 +97,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Không có gì đang phát ngay bây giờ...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bạn phải ở trong một kênh thoại để sử dụng lệnh này.**"
         );
       if (
         guild.me.voice.channel &&
@@ -110,12 +110,12 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **Bạn phải ở cùng kênh thoại với BOT để sử dụng lệnh này!**"
         );
       if (!args)
         return client.sendTime(
           interaction,
-          "**Please provide a bassboost level. \nAvailable Levels:** `none`, `low`, `medium`, `high`"
+          "**Vui lòng cung cấp mức bassboost. \nCác cấp độ có sẵn:** `none`, `low`, `medium`, `high`"
         );
 
       let level = "none";
@@ -126,10 +126,9 @@ module.exports = {
           .fill(null)
           .map((_, i) => ({ band: i, gain: levels[level] }))
       );
-
       return client.sendTime(
         interaction,
-        `✅ | **Set the bassboost level to** \`${level}\``
+        `✅ | **Mức bassboost được đặt thành** \`${level}\``
       );
     },
   },
